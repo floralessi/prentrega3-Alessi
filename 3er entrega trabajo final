@@ -1,0 +1,161 @@
+<Script src="js/miarchivo.js"> </Script>
+
+
+nombre = prompt("Como te llamas?");
+let fecha = parseInt(prompt("Bienvenido"+nombre+" por favor ingresa en que año naciste"));
+let currentTime = new Date()
+let edades = currentTime.getFullYear()
+menu = "";
+let sumaNumeros = edades - fecha;
+
+RemeraA= "REMERA VANS";
+RemeraB= "REMERA JAMAICA";
+RemeraC= "REMERA OVERSIZE";
+
+
+const CostoRemeraA = 4500;
+const CostoRemeraB = 3000;
+const CostoRemeraC = 3500;
+
+function ivaA(peso){
+    let impuesto = ((CostoRemeraA * .21)+CostoRemeraA);
+    return impuesto;
+}
+
+function ivaB(peso){
+    let impuesto = ((CostoRemeraB * .21)+CostoRemeraB);
+    return impuesto;
+}
+
+function ivaC(peso){
+    let impuesto = ((CostoRemeraC * .21)+CostoRemeraC);
+    return impuesto;
+}
+
+
+    let menu = prompt(nombre+" elige por favor el producto necesitas.\n 1. RemeraA\n 2. RemeraB\n 3. RemeraC\n Presiona S para salir.");
+    
+    while (menu !="S"){
+    switch(menu){
+    case"1":
+    alert("Tu necesitas "+RemeraA+". Tiene un costo de "+CostoRemeraA);
+    let compraA = prompt("Escribe F para comprar "+RemeraA);
+    if (compraA ==="F"){
+        let totalA = ivaA(CostoRemeraA);
+        alert("Precio total es de $"+totalA);
+        }
+    else{
+    compraA=alert("Si lo compras? Escribe F")
+    }
+    break;
+    case"2":
+    alert("Tu necesitas "+RemeraB+". Tiene un costo de "+CostoRemeraB);
+    let compraB = prompt("Escribe F para comprar "+RemeraB);
+    if (compraB ==="F"){
+        let totalB = ivaB(CostoRemeraB);
+        alert("Precio total es de $"+totalB);
+    }else{
+    compraB=alert("Si lo compras? Escribe F")
+    } break;
+    case"3":
+    alert("Tu necesitas "+RemeraC+". Tiene un costo de "+CostoRemeraC);
+    let compraC = prompt("Escribe F para comprar "+RemeraC);
+    if (compraC ==="F"){
+        let totalC = ivaC(CostoRemeraC);
+        alert("Precio total es de $"+totalC);
+    }else{
+    compraB=alert("Si lo compras? Escribe F")
+    } break;
+    default:
+    alert("Número inválido. elige por favor el número del producto que necesitas.\n 1. RemeraA\n 2. RemeraB\n 3. RemeraC\n Presiona S para salir.");
+    break;
+    }
+    menu = prompt("Gracias "+nombre+" elige por favor el número del producto que necesitas.\n 1. RemeraA\n 2. RemeraB\n 3. RemeraC\n Presiona S para salir.");
+    }
+    
+   
+
+
+let stockProductos = [
+    {
+            id: 1, producto: "Remera Capri", precio: 2000, 
+    },
+    {
+            id: 2, producto: "Remera Roma", precio: 2500, 
+    },
+
+    {
+            id: 3, producto: "Remera Capri", precio: 3500, 
+    },
+    {
+            id: 4, producto: "Remera Venecia", precio: 2500,
+    },
+    {
+            id: 5, producto: "Remera Jass", precio: 2000, 
+    {
+            id: 6, producto: "Remera Napoli", precio: 2500, 
+    },
+    {
+            id: 7, producto: "Pantalon Azul", precio: 8000, 
+    },
+    {
+            id: 8, producto  : "Pantalon Blanco", precio: 8500, 
+    },
+    {
+            id: 9, producto: "Pantalon Mom", precio: 8100, 
+    },
+    {
+            id: 10, producto: "Pantalon Chupin", precio: 8400, 
+    },
+    {
+            id: 11, producto: "Short Blanco", precio: 4000, 
+    },
+    {
+            id: 12, producto: "Short Jean", precio: 4200, 
+    },
+    {
+            id: 13, producto: "Short Negro", precio: 4100, 
+    },
+    {
+            id: 14, producto: "Remera Rojas", precio: 4300, 
+    },
+   
+];
+
+let carrito = []
+
+const tarjetas = document.getElementById("tarjetas")
+
+function tarjetasProductos () {
+    for (const producto of stockProductos){
+    tarjetas.innerHTML += `
+    <div class="card col" style="width: 18rem;">
+            <img src="${producto.foto}" class="card-img-top" alt="...">
+            <div class="card-body">
+                    <h2 class="card-title">
+                            ${producto.stock}
+                    </h2>
+                    <p class="card-text">
+                            ${producto.descripcion}
+                    </p>
+                    <button id="btn${producto.id}" class="btn btn-primary ">
+                            $${producto.precio}
+                    </button>
+            </div>
+    </div>
+    `;
+    } 
+    stockProductos.forEach((producto) => {
+            document.getElementById(`btn${producto.id}`).addEventListener("click",function(){
+    agregarAlCarrito(producto);
+            });
+    });
+}
+
+tarjetasProductos();
+
+function agregarAlCarrito(pedido) {
+    carrito.push(pedido);
+    console.table(carrito);
+    alert("Has agregado al carrito " +pedido.stock);
+}
