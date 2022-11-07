@@ -132,30 +132,4 @@ function tarjetasProductos () {
     <div class="card col" style="width: 18rem;">
             <img src="${producto.foto}" class="card-img-top" alt="...">
             <div class="card-body">
-                    <h2 class="card-title">
-                            ${producto.stock}
-                    </h2>
-                    <p class="card-text">
-                            ${producto.descripcion}
-                    </p>
-                    <button id="btn${producto.id}" class="btn btn-primary ">
-                            $${producto.precio}
-                    </button>
-            </div>
-    </div>
-    `;
-    } 
-    stockProductos.forEach((producto) => {
-            document.getElementById(`btn${producto.id}`).addEventListener("click",function(){
-    agregarAlCarrito(producto);
-            });
-    });
-}
-
-tarjetasProductos();
-
-function agregarAlCarrito(pedido) {
-    carrito.push(pedido);
-    console.table(carrito);
-    alert("Has agregado al carrito " +pedido.stock);
-}
+                
