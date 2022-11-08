@@ -27,11 +27,6 @@ function ivaB(peso){
     return impuesto;
 }
 
-function ivaC(peso){
-    let impuesto = ((CostoRemeraC * .21)+CostoRemeraC);
-    return impuesto;
-}
-
 
     let menu = prompt(nombre+" elige por favor el producto necesitas.\n 1. RemeraA\n 2. RemeraB\n 3. RemeraC\n Presiona S para salir.");
     
@@ -119,17 +114,26 @@ let stockProductos = [
     {
             id: 14, producto: "Remera Rojas", precio: 4300, 
     },
+    
+    {
+            id: 15, producto: "Remera Blanca lisa", precio: 4300, 
+    },
    
-];
+ {
+            id: 16, producto: "Remera Rosa", precio: 4300, 
+    },
+   
+ {
+            id: 17, producto: "Remera azul metalizado", precio: 4500, 
+    },
+   
+ {
+            id: 18, producto: "Remera crema", precio: 4400, 
+    },
+    {
+            id: 19, producto: "Remera verde agua", precio: 4200, 
+    },
+    {
+            id: 20, producto: "Remera pastel", precio: 4500, 
+    }
 
-let carrito = []
-
-const tarjetas = document.getElementById("tarjetas")
-
-function tarjetasProductos () {
-    for (const producto of stockProductos){
-    tarjetas.innerHTML += `
-    <div class="card col" style="width: 18rem;">
-            <img src="${producto.foto}" class="card-img-top" alt="...">
-            <div class="card-body">
-                
